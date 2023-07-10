@@ -8,7 +8,7 @@ $query = mysqli_query($mysqli, "SELECT * from db_mitra");
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Magister Karyawan</title>
+  	<title>Magister Mitra</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -54,9 +54,11 @@ $query = mysqli_query($mysqli, "SELECT * from db_mitra");
 
 <!-- Page Content  -->
 <center>
-<h2>Data Mitra</h2>
-<td><a href="tambah data2.php"class="btn btn-sm btn-info"style "center">Tambah Mitra</a>
+<h2>Magister Mitra</h2>
+
+<td><a href="tambah data2.php"class="btn btn-sm btn-info" ><left>Tambah Mitra</a>
 <table class="table-bordered table-responsive"width="100%" >
+</td>
     <thead>
         <tr>
         <th>No</th><th>NIK</th><th>Nama</th><th>Provinsi</th><th>Kab/kota</th><th>Kec</th><th>Desa/kel</th><th>Jenis Kelamin</th><th>No telp</th><th>action</th>
@@ -78,14 +80,24 @@ $query = mysqli_query($mysqli, "SELECT * from db_mitra");
             <td><?php echo $result['desa/kel'];?></td>
             <td><?php echo $result['jenis_kelamin'];?></td>
             <td><?php echo $result['no_telp'];?></td>
-            <td><a href="hapus data2.php?no=<?echo $result['no'];?> "class="btn btn-sm btn-danger">Hapus</a><td>
+            <td>
+            <a href="hapus data2.php?no=<?php echo $result['no'];?> "class="btn btn-sm btn-danger">Hapus</a>
+            <a href="form edit2.php?no=<?php  echo $result['no'];?>&&page=edit "class="btn btn-sm btn-warning">Edit</a>
         </tr>
         <?php }?>
 </tbody>
 </table>
 </center>
 
+<?php 
+            if($_GET['page']=='edit'){
+                include 'form edit2.php';
+            }
+            else{
+                echo 'data mitra';
+            } ?>
 <php
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
